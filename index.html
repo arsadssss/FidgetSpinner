@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            margin: 0;
+            padding: 0;
+        }
+        .container{
+            width: 100%;
+            height: 100vh;
+            background-color: #ffffff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .main{
+            width: 400px;
+            height: 500px;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            background-color: #ffffff;
+            box-shadow: 0px 0px 10px #b1b1b1;
+            border-radius: 30px;
+            padding: 30px;
+
+        }
+        .main img{
+            width: 300px;
+            height: 300px;
+            /* -webkit-filter: drop-shadow(0px 0px 15px #ffc400); */
+            /* filter: drop-shadow(0px 0px 30px #ffc400); */
+            padding-bottom: 30px;
+            transition:2s ease-in-out;
+            
+        }
+        .img-fidget{
+            animation: rotation 1s linear;
+            animation-iteration-count: infinite;
+        }
+        @keyframes rotation {
+      from {
+         transform: rotate(0deg);
+       }
+        to {
+        transform: rotate(360deg);
+         }
+         }
+        button{
+            padding: 10px 30px;
+            outline: none;
+            border: none;
+            border-radius: 20px;
+            background-color: #000000;
+            /* box-shadow: inset 0px 0px 10px 5px #ffc400; */
+            cursor: pointer;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="main">
+            <img id="imgy" src="fidget-spinner.png">
+            <div class="arsh1">
+                <button id="btn-arsh" style="background-color: rgb(0, 0, 0);">Start</button>
+                <button id="btn-sant" style="background-color: rgb(0, 0, 0);">Stop</button>
+            </div>
+            <!-- <button id="reset">Reset</button> -->
+            <!-- <div class="arsh1">
+                <button id="btn-sant" style="background-color: rgb(255, 42, 42);">Stop</button>
+            </div> -->
+            <p>Arsad Spin : <span class="arsh">0</span></p>
+            <p>Santhos Spin : <span class="sant">0</span></p>
+            <p class="result"></p>
+        </div>
+    </div>
+    <script>
+        
+        var imgClass = document.querySelector("#imgy");
+        document.querySelector("#btn-arsh").addEventListener("click", function(){
+            var math = Math.floor(Math.random()*10)+1;
+            imgClass.classList.add("img-fidget");
+            imgClass.style.animationIterationCount= math;
+            var arshTotal = document.querySelector(".arsh");
+            arshTotal.innerHTML = math;
+            
+
+        })
+        document.querySelector("#btn-sant").addEventListener("click", function(){
+            var math = Math.floor(Math.random()*10)+1;
+            imgClass.classList.remove("img-fidget");
+            imgClass.style.animationIterationCount= math;
+            var santTotal = document.querySelector(".sant");
+            santTotal.innerHTML = math;
+
+        })
+        document.querySelector("#reset").addEventListener("click", function(){
+            window.location.reload();
+
+        })
+        // if(arshTotal.innerHTML == santTotal.innerHTML){
+        //     document.querySelector(".result").innerHTML ="Match is tie";
+        // }else if(arshTotal.innerHTML > santTotal.innerHTML){
+        //     document.querySelector(".result").innerHTML ="Arsas Win";
+        // }else{
+        //     document.querySelector(".result").innerHTML ="Santosh Win";
+        // }
+    </script>
+</body>
+</html>
